@@ -3,6 +3,7 @@ from config import *
 from dataset_operations import remove_unnecessary_columns
 from dataset_operations.filter_language import filter_reviews_for_specific_language
 from lemmatize_reviews import lemmatize_review_dataset
+from preprocessing.create_sentiment_labels import create_sentiment_labels
 from remove_stopwords import clean_stopwords_from_dataset
 from text_normalization import normalize_review_dataset
 
@@ -16,6 +17,7 @@ def run_text_preprocessing_pipeline():
     4. Normalize text
     5. Remove stopwords (including domain-specific)
     6. Lemmatize text
+    7. Label rating
     """
     # Step 1
     remove_unnecessary_columns(
@@ -54,6 +56,12 @@ def run_text_preprocessing_pipeline():
     lemmatize_review_dataset(
         input_path=NO_STOP_WORDS_PATH,
         output_path=LEMMATIZED_PATH
+    )
+
+    # Step 7
+    create_sentiment_labels(
+        input_path=LEMMATIZED_PATH,
+        output_path=LABELED_PATH
     )
 
 

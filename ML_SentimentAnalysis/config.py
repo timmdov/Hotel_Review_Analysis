@@ -5,6 +5,7 @@ CLEANED_PATH = "../dataset/tripadvisor_cleaned_reviews.csv" # step 3: cleaning d
 NORMALIZED_PATH = "../dataset/tripadvisor_normalized_reviews.csv" # step 4: normalizing data
 NO_STOP_WORDS_PATH = "../dataset/tripadvisor_cleaned_nostopwords.csv" # step 5: removing stop words
 LEMMATIZED_PATH = "../dataset/tripadvisor_lemmatized_reviews.csv" # step 6: lemmatization
+LABELED_PATH = "../dataset/tripadvisor_sentiment_ready.csv" # step 7: labeling rating
 
 COLUMNS_TO_KEEP = ["HotelName", "Review", "Rating"] # columns to keep for step 1
 COLUMN_TO_DETECT_LANGUAGE = "Review" # column to keep only language specific reviews. step 2
