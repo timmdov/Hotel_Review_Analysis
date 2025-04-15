@@ -1,8 +1,9 @@
-import logging
-
 import pandas as pd
 
 from config import RAW_DATASET_PATH, FILTERED_PATH, COLUMNS_TO_KEEP
+from logger import get_logger
+
+logger = get_logger(__name__)
 
 
 def remove_unnecessary_columns(input_path, output_path, columns_to_keep):
@@ -19,9 +20,9 @@ def remove_unnecessary_columns(input_path, output_path, columns_to_keep):
         df = pd.read_csv(input_path)
         df_filtered = df[columns_to_keep]
         df_filtered.to_csv(output_path, index=False)
-        logging.info(f"Saved filtered dataset to: {output_path}")
+        logger.info(f"Saved filtered dataset to: {output_path}")
     except Exception as e:
-        logging.info(f"Error: {e}")
+        logger.info(f"Error: {e}")
 
 
 def run_filter_columns():

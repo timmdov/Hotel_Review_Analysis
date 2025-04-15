@@ -1,16 +1,16 @@
 import os
-import pandas as pd
-from text_vectorization.text_vectorization_sklearn import vectorize_reviews
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, precision_recall_fscore_support, confusion_matrix
-from dataset_operations.run_dataset_pipeline import clean_and_filter_turkish_reviews
-import logging
 
-logging.basicConfig(
-    format="%(asctime)s : %(levelname)s : %(message)s",
-    level=logging.INFO
-)
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, precision_recall_fscore_support, confusion_matrix
+from sklearn.model_selection import train_test_split
+
+from dataset_operations.run_dataset_pipeline import clean_and_filter_turkish_reviews
+from logger import get_logger
+from text_vectorization.text_vectorization_sklearn import vectorize_reviews
+
+logger = get_logger(__name__)
+
 
 def train_logistic_regression(X, y):
     X_train, X_test, y_train, y_test = train_test_split(
@@ -30,13 +30,13 @@ def train_logistic_regression(X, y):
     precision, recall, f1, _ = precision_recall_fscore_support(y_test, predictions, average='macro')
     cm = confusion_matrix(y_test, predictions)
 
-    print("Evaluation Results:")
-    print(f"Accuracy:  {acc:.4f}")
-    print(f"Precision: {precision:.4f}")
-    print(f"Recall:    {recall:.4f}")
-    print(f"F1-score:  {f1:.4f}")
-    print("Confusion Matrix:")
-    print(cm)
+    logger.info("Evaluation Results:")
+    logger.info(f"Accuracy:  {acc:.4f}")
+    logger.info(f"Precision: {precision:.4f}")
+    logger.info(f"Recall:    {recall:.4f}")
+    logger.info(f"F1-score:  {f1:.4f}")
+    logger.info("Confusion Matrix:")
+    logger.info(cm)
 
     return model
 

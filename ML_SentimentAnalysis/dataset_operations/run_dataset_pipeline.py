@@ -1,13 +1,5 @@
-import logging
-
+from config import RAW_DATASET_PATH, FILTERED_PATH, TURKISH_ONLY_PATH, COLUMNS_TO_KEEP, COLUMN_TO_DETECT_LANGUAGE
 from dataset_operations import *
-from dataset_operations.config import RAW_DATASET_PATH, FILTERED_PATH, TURKISH_ONLY_PATH, COLUMNS_TO_KEEP, \
-    COLUMN_TO_DETECT_LANGUAGE
-
-logging.basicConfig(
-    format='%(asctime)s : %(levelname)s : %(message)s',
-    level=logging.INFO
-)
 
 
 def clean_and_filter_turkish_reviews(original_path, filtered_columns_path, final_output_path, columns_to_keep,
