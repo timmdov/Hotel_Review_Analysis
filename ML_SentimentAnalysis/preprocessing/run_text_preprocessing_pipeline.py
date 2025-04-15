@@ -3,7 +3,8 @@ from config import *
 from dataset_operations import remove_unnecessary_columns
 from dataset_operations.filter_language import filter_reviews_for_specific_language
 from lemmatize_reviews import lemmatize_review_dataset
-from preprocessing.create_sentiment_labels import create_sentiment_labels
+from create_sentiment_labels import create_sentiment_labels
+from prepare_dataset_for_model import prepare_dataset_for_model
 from remove_stopwords import clean_stopwords_from_dataset
 from text_normalization import normalize_review_dataset
 
@@ -62,6 +63,12 @@ def run_text_preprocessing_pipeline():
     create_sentiment_labels(
         input_path=LEMMATIZED_PATH,
         output_path=LABELED_PATH
+    )
+
+    # Step 8
+    prepare_dataset_for_model(
+        input_path=LABELED_PATH,
+        output_path=FINAL_PATH,
     )
 
 
