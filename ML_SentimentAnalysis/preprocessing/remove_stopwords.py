@@ -20,7 +20,10 @@ domain_stopwords = [
     "kaldık", "kaldığımız", "memnun", "memnunuz", "memnuniyet",
     "güzeldi", "iyiydi", "süper", "mükemmel", "harika", "güzel",
     "yer", "mekan", "mekân", "yeriydi", "yeri", "bir", "daha",
-    "yine", "için", "bize", "bizi", "bizim", "bizi", "çok", "şey"
+    "yine", "için", "bize", "bizi", "bizim", "bizi", "çok", "şey",
+    # Added after 1st EDA process
+    "teşekkür", "bey", "hanım", "eder", "et", "ol", "var", "olarak",
+    "kadar", "ayrı", "gül", "tekrar", "ekip","olma", "gel"
 ]
 
 custom_stopwords = turkish_stopwords.union(domain_stopwords)
