@@ -20,3 +20,4 @@ tzdata==2025.2
 urllib3==2.3.0
 vaderSentiment==3.3.2
 langdetect==1.0.9
+colorlog==6.9.0
