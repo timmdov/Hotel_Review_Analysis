@@ -1,7 +1,8 @@
 import pandas as pd
 from trnlp import TrnlpWord
 
-from config import LEMMATIZED_PATH, CLEANED_PATH, NO_STOP_WORDS_PATH
+# TODO: try other tool, too
+from config import LEMMATIZED_PATH, NO_STOP_WORDS_PATH
 from logger import get_logger
 
 logger = get_logger(__name__)

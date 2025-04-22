@@ -15,18 +15,17 @@ turkish_stopwords = set(stopwords.words("turkish"))
 domain_stopwords = [
     "otel", "hotelde", "otelin", "otelde", "otelden",
     "konakladık", "konaklama", "tesis", "çalışan", "çalışanlar",
-    "personel", "personelin", "personeller", "çok", "gayet", "herşey",
+    "personel", "personelin", "personeller", "herşey",
     "her şey", "otelimiz", "oteli", "otelinde", "otelimizi",
-    "kaldık", "kaldığımız", "memnun", "memnunuz", "memnuniyet",
-    "güzeldi", "iyiydi", "süper", "mükemmel", "harika", "güzel",
-    "yer", "mekan", "mekân", "yeriydi", "yeri", "bir", "daha",
-    "yine", "için", "bize", "bizi", "bizim", "bizi", "çok", "şey",
+    "kaldık", "kaldığımız", "yer", "mekan", "mekân", "yeriydi", "yeri", "bir", "daha",
+    "yine", "için", "bize", "bizi", "bizim", "bizi", "şey",
     # Added after 1st EDA process
-    "teşekkür", "bey", "hanım", "eder", "et", "ol", "var", "olarak",
-    "kadar", "ayrı", "gül", "tekrar", "ekip","olma", "gel"
+    "bey", "hanım", "eder", "et", "ol", "var", "olarak",
+    "kadar", "ayrı", "gül", "tekrar", "ekip", "olma", "gel"
 ]
 
 custom_stopwords = turkish_stopwords.union(domain_stopwords)
+
 
 def remove_stopwords(text: str) -> str:
     """
