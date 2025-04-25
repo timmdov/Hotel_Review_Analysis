@@ -1,0 +1,155 @@
+ML_SentimentAnalysis/
+├── 📁 data/
+│   ├── raw/                            # Raw scraped datasets
+│   ├── interim/                        # Cleaned but not yet annotated
+│   ├── processed/                      # Final labeled datasets
+│   └── results/                        # Evaluation logs, plots, predictions
+│
+├── 📁 notebooks/                       # Jupyter notebooks for experimentation
+│   ├── 01_eda.ipynb
+│   ├── 02_model_comparison.ipynb
+│   ├── 03_topic_modeling.ipynb
+│   └── 04_multilingual_demo.ipynb
+│
+├── 📁 src/
+│   ├── __init__.py
+│
+│   ├── 📁 preprocessing/               # All text preprocessing logic
+│   │   ├── __init__.py
+│   │   ├── cleaner.py                 # Normalize, remove emojis, punctuation
+│   │   ├── stopwords.py              # Custom Turkish/English stopwords
+│   │   ├── lemmatizer.py             # spaCy/Zemberek lemmatization
+│   │   └── language_detect.py        # langdetect or fastText lang ID
+│
+│   ├── 📁 annotation/                 # Labeling logic
+│   │   ├── vader_wrapper.py          # VADER sentiment for English
+│   │   ├── rule_based_tr.py          # Rule-based sentiment for Turkish
+│   │   └── bert_predict.py           # BERT-based sentiment
+│
+│   ├── 📁 vectorization/
+│   │   ├── count_vectorizer.py
+│   │   ├── tfidf_vectorizer.py
+│   │   └── bert_embedder.py         # BERT embeddings if needed
+│
+│   ├── 📁 models/
+│   │   ├── train_logreg.py
+│   │   ├── train_svm.py
+│   │   ├── train_bert.py
+│   │   └── evaluate.py              # Metrics, confusion matrix, reports
+│
+│   ├── 📁 multilingual/
+│   │   ├── translate.py             # Google Translate / Argos API
+│   │   └── multilingual_router.py   # Route reviews to correct model
+│
+│   ├── 📁 utils/
+│   │   ├── io.py                    # Load/save files
+│   │   └── visualization.py        # Plotting confusion matrix, class dist
+│
+│   ├── 📁 pipeline/                 # End-to-end pipeline runners
+│   │   ├── model_logreg.py
+│   │   ├── model_berturk.py
+│   │   ├── model_multilang.py
+│   │   └── evaluate_all.py         # Compare all models
+│
+├── 📁 tests/                         # Unit tests for modules
+│   ├── test_preprocessing.py
+│   ├── test_models.py
+│   └── test_pipeline.py
+│
+├── requirements.txt
+├── README.md
+└── .gitignore
+
+
+# 📁 ML_SentimentAnalysis - Project Structure Notes
+
+This project is designed for multilingual sentiment analysis of hotel reviews.
+It supports both classical machine learning and transformer-based models,
+as well as preprocessing, translation, topic modeling, and evaluation.
+
+--------------------------------------------------------
+📂 data/
+- raw/           → Raw scraped reviews (untouched CSVs)
+- interim/       → Cleaned but not fully labeled datasets
+- processed/     → Final datasets: preprocessed, labeled, ready for modeling
+- results/       → Stores output logs, model metrics, saved models, confusion matrices
+
+NOTE: All data subdirectories are tracked in .gitignore EXCEPT structure (via .gitkeep)
+
+--------------------------------------------------------
+📂 notebooks/
+- eda.ipynb             → Initial data exploration and visualization
+- topic_modeling.ipynb  → LDA or BERTopic applied to clustered review themes
+- multilingual_demo.ipynb → Language detection, translation, multilingual routing demo
+
+TIP: Use these to prototype ideas before converting to pipeline scripts
+
+--------------------------------------------------------
+📂 src/
+Contains the core modular Python packages of the project.
+
+📁 preprocessing/
+- cleaner.py        → Normalize, remove emojis/punctuation
+- stopwords.py      → Load custom stopword lists (e.g., Turkish)
+- lemmatizer.py     → spaCy or Zemberek lemmatization
+- language_detect.py → Language detection using langdetect or fastText
+
+📁 annotation/
+- vader_wrapper.py  → English sentiment with VADER
+- rule_based_tr.py  → Simple Turkish sentiment rules (optional)
+- bert_predict.py   → Use BERT models like BERTurk or XLM-R for sentiment classification
+
+📁 vectorization/
+- count_vectorizer.py → Scikit-learn CountVectorizer logic
+- tfidf_vectorizer.py → TF-IDF vectorizer with filtering and n-grams
+- bert_embedder.py    → Convert text to BERT embeddings if needed
+
+📁 models/
+- train_logreg.py   → Logistic Regression training logic
+- train_svm.py      → SVM model (if used)
+- train_bert.py     → HuggingFace BERT model training
+- evaluate.py       → Outputs metrics: Accuracy, F1, confusion matrix, etc.
+
+📁 multilingual/
+- translate.py      → Translate text via API (Google, Argos)
+- multilingual_router.py → Choose model per language (mBERT, BERTurk, etc.)
+
+📁 utils/
+- io.py             → Read/write CSV, pickle models
+- visualization.py  → Confusion matrix, bar charts, word clouds
+- logger.py         → Project-wide logger for consistent output
+
+--------------------------------------------------------
+📂 pipeline/
+This is where we run complete model pipelines.
+
+- model_logreg.py     → CountVectorizer + Logistic Regression
+- model_berturk.py    → BERTurk for Turkish sentiment
+- model_multilang.py  → Mixed-language handling (language detect → route)
+- evaluate_all.py     → Compare all models on a common dataset
+
+Run any of these from command line or PyCharm:
+$ python src/pipeline/model_berturk.py
+
+--------------------------------------------------------
+📂 tests/
+Unit tests for ensuring modules work independently.
+Use `pytest` or `unittest` to validate logic as the project grows.
+
+--------------------------------------------------------
+📝 Other Files
+- requirements.txt → All required Python packages (export via pip freeze)
+- README.md        → General project overview (for GitHub)
+- .gitignore       → Prevents data/results/models from being tracked in Git
+- project_structure_notes.txt ← THIS FILE
+
+--------------------------------------------------------
+
+✅ RECOMMENDED WORKFLOW
+1. Place raw CSV in `data/raw/`
+2. Preprocess and save to `data/processed/`
+3. Choose and run a pipeline in `src/pipeline/`
+4. Save metrics to `data/results/` + logs via `logger.py`
+5. Use notebooks for further exploration or tuning
+
+--------------------------------------------------------

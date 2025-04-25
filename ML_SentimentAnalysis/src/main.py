@@ -1,4 +1,4 @@
-from tools.dataset_tools import save_filtered_dataset
+from src.utils.dataset_tools import save_filtered_dataset
 
 save_filtered_dataset(
     input_csv_path="data/Booking.com/Hotel_Reviews.csv",
