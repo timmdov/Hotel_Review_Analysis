@@ -1,3 +1,18 @@
+"""
+Stopword Removal Module for Turkish Hotel Reviews
+
+This module provides functions for removing stopwords from Turkish hotel reviews.
+The stopwords list consists of:
+1. Standard Turkish stopwords from NLTK (with sentiment-bearing words removed)
+2. Additional common Turkish stopwords not included in NLTK
+3. Domain-specific stopwords related to hotels and travel
+
+The stopwords list has been carefully curated to:
+- Remove common words that don't contribute to sentiment analysis
+- Preserve words that are important for sentiment classification
+- Remove domain-specific terms that are common across all reviews
+"""
+
 import pandas as pd
 from nltk.corpus import stopwords
 
@@ -8,20 +23,59 @@ logger = get_logger(__name__)
 
 import nltk
 
-nltk.download("stopwords")
+# Download NLTK stopwords if not already downloaded
+nltk.download("stopwords", quiet=True)
 
 turkish_stopwords = set(stopwords.words("turkish"))
 
+# Remove some stopwords that might be important for sentiment analysis
+sentiment_bearing_words = {
+    "güzel", "iyi", "kötü", "harika", "berbat", "mükemmel", 
+    "temiz", "kirli", "rahat", "rahatsız", "lezzetli", "lezzetsiz",
+    "nazik", "kaba", "yardımsever", "ilgisiz", "pahalı", "ucuz"
+}
+
+turkish_stopwords = turkish_stopwords - sentiment_bearing_words
+
+# Add more common Turkish stopwords that aren't in NLTK's list
+additional_turkish_stopwords = {
+    "acaba", "aslında", "belki", "beri", "bile", "böyle", "çok", "çünkü",
+    "diye", "eğer", "fakat", "gene", "gibi", "hatta", "hem", "hep",
+    "hepsi", "hiç", "ise", "işte", "kaç", "kez", "ki", "kim",
+    "madem", "nasıl", "neden", "nerede", "nereye", "niçin", "niye", "rağmen",
+    "sanki", "şayet", "şekilde", "şimdi", "tüm", "üzere", "ya", "yani",
+    "yok", "zaten", "zira"
+}
+
+turkish_stopwords = turkish_stopwords.union(additional_turkish_stopwords)
+
 domain_stopwords = [
-    "otel", "hotelde", "otelin", "otelde", "otelden",
-    "konakladık", "konaklama", "tesis", "çalışan", "çalışanlar",
-    "personel", "personelin", "personeller", "herşey",
-    "her şey", "otelimiz", "oteli", "otelinde", "otelimizi",
-    "kaldık", "kaldığımız", "yer", "mekan", "mekân", "yeriydi", "yeri", "bir", "daha",
-    "yine", "için", "bize", "bizi", "bizim", "bizi", "şey",
-    # Added after 1st EDA process
+    # Hotel and accommodation related terms
+    "otel", "hotelde", "otelin", "otelde", "otelden", "hotel",
+    "konakladık", "konaklama", "tesis", "tesisi", "tesiste",
+    "oda", "odada", "odalar", "odaları", "odamız", "odası",
+    "resepsiyon", "lobi", "lobby", "restoran", "restaurant",
+    "kahvaltı", "yemek", "havuz", "plaj", "deniz", "spa", "hamam",
+    "rezervasyon", "booking", "check", "giriş", "çıkış",
+
+    # Staff related terms
+    "çalışan", "çalışanlar", "personel", "personelin", "personeller", 
+    "görevli", "görevliler", "resepsiyonist", "garson", "temizlikçi",
+
+    # General hotel review terms
+    "herşey", "her şey", "otelimiz", "oteli", "otelinde", "otelimizi",
+    "kaldık", "kaldığımız", "konakladığımız", "yer", "mekan", "mekân", 
+    "yeriydi", "yeri", "gece", "gün", "hafta", "tatil", "seyahat",
+
+    # Common Turkish filler words
+    "bir", "daha", "yine", "için", "bize", "bizi", "bizim", "şey",
     "bey", "hanım", "eder", "et", "ol", "var", "olarak",
-    "kadar", "ayrı", "gül", "tekrar", "ekip", "olma", "gel"
+    "kadar", "ayrı", "gül", "tekrar", "ekip", "olma", "gel",
+
+    # Additional common words in hotel reviews
+    "kere", "kez", "defa", "kişi", "kişilik", "aile", "arkadaş",
+    "genel", "özel", "hizmet", "servis", "fiyat", "ücret", "para",
+    "süre", "zaman", "saat", "dakika", "gün", "gece", "sabah", "akşam"
 ]
 
 custom_stopwords = turkish_stopwords.union(domain_stopwords)

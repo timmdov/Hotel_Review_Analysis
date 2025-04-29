@@ -7,20 +7,17 @@ logger = get_logger(__name__)
 
 
 def map_rating_to_sentiment(rating: int) -> int:
-    if rating <= 2:
+    if rating <= 3:  # Changed from rating <= 2 to include rating 3
         return 0  # Negative
-    elif rating == 3:
-        return 1  # Neutral
     else:
-        return 2  # Positive
+        return 1  # Positive
 
 
 def create_sentiment_labels(input_path: str, output_path: str) -> None:
     """
     Maps hotel review ratings (1–5) to sentiment labels:
-    - 0: Negative
-    - 1: Neutral
-    - 2: Positive
+    - 0: Negative (ratings 1-3)
+    - 1: Positive (ratings 4-5)
 
     Adds a new column: 'Sentiment'
 
