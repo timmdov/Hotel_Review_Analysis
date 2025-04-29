@@ -1,15 +1,11 @@
 from clean_reviews import clean_review_dataset
-from src.utils.config import *
-from dataset_operations import remove_unnecessary_columns
-from src.utils.filter_language import filter_reviews_for_specific_language
 from lemmatize_reviews import lemmatize_review_dataset
-<<<<<<< Updated upstream:ML_SentimentAnalysis/preprocessing/run_text_preprocessing_pipeline.py
-from create_sentiment_labels import create_sentiment_labels
 from prepare_dataset_for_model import prepare_dataset_for_model
-=======
-from src.preprocessing.create_sentiment_labels import create_sentiment_labels
->>>>>>> Stashed changes:ML_SentimentAnalysis/src/preprocessing/run_text_preprocessing_pipeline.py
 from remove_stopwords import clean_stopwords_from_dataset
+from src.preprocessing.create_sentiment_labels import create_sentiment_labels
+from src.utils.config import *
+from src.utils.filter_columns import remove_unnecessary_columns
+from src.utils.filter_language import filter_reviews_for_specific_language
 from text_normalization import normalize_review_dataset
 
 

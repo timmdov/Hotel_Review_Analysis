@@ -1,7 +1,7 @@
 import pandas as pd
 
-from config import RAW_DATASET_PATH, FILTERED_PATH, COLUMNS_TO_KEEP
-from logger import get_logger
+from src.utils.config import RAW_DATASET_PATH, FILTERED_PATH, COLUMNS_TO_KEEP
+from src.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

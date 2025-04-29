@@ -1,6 +1,6 @@
 import pandas as pd
 
-from config import LABELED_PATH, COLUMNS_TO_KEEP_FOR_MODEL, FINAL_PATH
+from src.utils.config import LABELED_PATH, COLUMNS_TO_KEEP_FOR_MODEL, FINAL_PATH
 
 def prepare_dataset_for_model(input_path, output_path):
     df = pd.read_csv(input_path)

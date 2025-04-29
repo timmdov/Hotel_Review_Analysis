@@ -1,14 +1,10 @@
 import pandas as pd
 from trnlp import TrnlpWord
 
-<<<<<<< Updated upstream:ML_SentimentAnalysis/preprocessing/lemmatize_reviews.py
-# TODO: try other tool, too
-from config import LEMMATIZED_PATH, NO_STOP_WORDS_PATH
-from logger import get_logger
-=======
 from src.utils.config import LEMMATIZED_PATH, NO_STOP_WORDS_PATH
 from src.utils.logger import get_logger
->>>>>>> Stashed changes:ML_SentimentAnalysis/src/preprocessing/lemmatize_reviews.py
+
+# TODO: try other tool, too
 
 logger = get_logger(__name__)
 

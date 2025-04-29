@@ -2,8 +2,8 @@ import pandas as pd
 from langdetect import detect
 from langdetect.lang_detect_exception import LangDetectException
 
-from config import TURKISH_ONLY_PATH, FILTERED_PATH, COLUMN_TO_DETECT_LANGUAGE, LANGUAGE_TO_FILTER
-from logger import get_logger
+from src.utils.config import TURKISH_ONLY_PATH, FILTERED_PATH, COLUMN_TO_DETECT_LANGUAGE, LANGUAGE_TO_FILTER
+from src.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
