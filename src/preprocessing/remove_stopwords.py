@@ -5,6 +5,7 @@ This module removes stopwords from lemmatized Turkish hotel reviews.
 - It uses Turkish NLTK stopwords (excluding sentiment-carrying words)
 - Adds extra fillers and domain-specific vocabulary
 """
+import os
 
 import pandas as pd
 
@@ -13,7 +14,9 @@ from src.utils.io.logger import get_logger
 
 logger = get_logger(__name__)
 
-with open("../resources/stopwords.txt", "r", encoding="utf-8") as f:
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+
+with open(os.path.join(BASE_DIR, "resources", "stopwords.txt"), "r", encoding="utf-8") as f:
     stopwords = set(line.strip() for line in f if line.strip())
 
 
