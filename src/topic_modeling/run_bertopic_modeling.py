@@ -3,6 +3,7 @@ import os
 import pandas as pd
 from bertopic import BERTopic
 from sentence_transformers import SentenceTransformer
+from umap import UMAP
 
 from src.utils.config.paths import TOPIC_MODELING_DIR, STEP8_MODEL_READY, STEP5_LEMMATIZED, STEP6_NO_STOPWORDS
 from src.utils.io.logger import get_logger
@@ -70,11 +71,14 @@ def train_topic_model(docs: list[str]) -> BERTopic:
     embedding_model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
 
     logger.info("Training BERTopic model...")
+
+    umap_model = UMAP(n_neighbors=15, n_components=5, metric='cosine', random_state=42)
     model = BERTopic(
         embedding_model=embedding_model,
         language="multilingual",
         calculate_probabilities=True,
-        verbose=True
+        verbose=True,
+        umap_model=umap_model
     )
     model.fit(docs)
     return model
