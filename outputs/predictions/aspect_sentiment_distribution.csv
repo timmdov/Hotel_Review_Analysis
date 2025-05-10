@@ -1,0 +1,28 @@
+HotelName,Aspect,Sentiment_Label,Count
+Long Beach Resorts,Cleanliness,Negative,1
+Long Beach Resorts,Entertainment,Negative,1
+Long Beach Resorts,Entertainment,Positive,3
+Long Beach Resorts,Family,Positive,3
+Long Beach Resorts,Food,Negative,1
+Long Beach Resorts,Food,Positive,2
+Long Beach Resorts,Location,Positive,1
+Long Beach Resorts,Staff,Negative,1
+Long Beach Resorts,Staff,Positive,4
+Sueno Hotels Deluxe Belek,Cleanliness,Positive,3
+Sueno Hotels Deluxe Belek,Entertainment,Negative,2
+Sueno Hotels Deluxe Belek,Entertainment,Positive,9
+Sueno Hotels Deluxe Belek,Food,Positive,5
+Sueno Hotels Deluxe Belek,Noise,Positive,1
+Sueno Hotels Deluxe Belek,Room,Positive,4
+Sueno Hotels Deluxe Belek,Staff,Negative,2
+Sueno Hotels Deluxe Belek,Staff,Positive,7
+Trendy Lara,Cleanliness,Positive,1
+Trendy Lara,Entertainment,Negative,1
+Trendy Lara,Entertainment,Positive,4
+Trendy Lara,Family,Positive,2
+Trendy Lara,Food,Negative,1
+Trendy Lara,Food,Positive,2
+Trendy Lara,Room,Negative,2
+Trendy Lara,Room,Positive,1
+Trendy Lara,Staff,Negative,1
+Trendy Lara,Staff,Positive,10
