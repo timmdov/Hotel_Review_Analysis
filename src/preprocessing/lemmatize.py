@@ -1,10 +1,8 @@
 import pandas as pd
 from trnlp import TrnlpWord
 
-from src.utils.config.paths import STEP6_LEMMATIZED, STEP5_NO_STOPWORDS
+from src.utils.config.paths import STEP4_NORMALIZED, STEP5_LEMMATIZED
 from src.utils.io.logger import get_logger
-
-# TODO: try other tool, too
 
 logger = get_logger(__name__)
 
@@ -16,7 +14,9 @@ def lemmatize_text(text: str) -> str:
     for word in words:
         lemma = TrnlpWord()
         lemma.setword(word)
-        lemmatized_words.append(lemma.get_stem if lemma.get_stem else word)
+        # Fix: get_stem() is a method
+        stem = lemma.get_stem
+        lemmatized_words.append(stem if stem else word)
 
     return " ".join(lemmatized_words)
 
@@ -26,7 +26,11 @@ def lemmatize_review_dataset(input_path: str, output_path: str) -> None:
         df = pd.read_csv(input_path)
         logger.info(f"Loaded dataset with {len(df)} rows.")
 
-        df["Review_Lemma"] = df["Review_Clean"].astype(str).apply(lemmatize_text)
+        if "Review_Normalized" not in df.columns:
+            raise ValueError("Missing 'Review_Normalized' column in input CSV.")
+
+        df["Review_Lemma"] = df["Review_Normalized"].astype(str).apply(lemmatize_text)
+
         df.to_csv(output_path, index=False)
         logger.info(f"Lemmatized reviews saved to: {output_path}")
 
@@ -36,6 +40,6 @@ def lemmatize_review_dataset(input_path: str, output_path: str) -> None:
 
 if __name__ == "__main__":
     lemmatize_review_dataset(
-        input_path=STEP5_NO_STOPWORDS,
-        output_path=STEP6_LEMMATIZED
+        input_path=STEP4_NORMALIZED,
+        output_path=STEP5_LEMMATIZED
     )

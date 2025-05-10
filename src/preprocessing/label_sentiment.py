@@ -1,6 +1,6 @@
 import pandas as pd
 
-from src.utils.config.paths import STEP6_LEMMATIZED, STEP7_LABELED
+from src.utils.config.paths import STEP7_LABELED, STEP6_NO_STOPWORDS
 from src.utils.io.logger import get_logger
 
 logger = get_logger(__name__)
@@ -41,6 +41,6 @@ def create_sentiment_labels(input_path: str, output_path: str) -> None:
 
 if __name__ == "__main__":
     create_sentiment_labels(
-        input_path=STEP6_LEMMATIZED,
+        input_path=STEP6_NO_STOPWORDS,
         output_path=STEP7_LABELED
     )

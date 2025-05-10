@@ -48,20 +48,20 @@ def run_text_preprocessing_pipeline():
     )
 
     # Step 5
-    clean_stopwords_from_dataset(
+    lemmatize_review_dataset(
         input_path=STEP4_NORMALIZED,
-        output_path=STEP5_NO_STOPWORDS
+        output_path=STEP5_LEMMATIZED
     )
 
     # Step 6
-    lemmatize_review_dataset(
-        input_path=STEP5_NO_STOPWORDS,
-        output_path=STEP6_LEMMATIZED
+    clean_stopwords_from_dataset(
+        input_path=STEP5_LEMMATIZED,
+        output_path=STEP6_NO_STOPWORDS
     )
 
     # Step 7
     create_sentiment_labels(
-        input_path=STEP6_LEMMATIZED,
+        input_path=STEP6_NO_STOPWORDS,
         output_path=STEP7_LABELED
     )
 
