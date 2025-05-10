@@ -6,6 +6,8 @@ BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 DATA_RAW = os.path.join(BASE_DIR, "data", "raw", "reviews_raw.csv")
 DATA_INTERIM = os.path.join(BASE_DIR, "data", "interim")
 DATA_PROCESSED = os.path.join(BASE_DIR, "data", "processed")
+OUTPUTS_DIR = os.path.join(BASE_DIR, "outputs")
+VISUALIZATIONS_DIR = os.path.join(OUTPUTS_DIR, "visualizations")
 
 RAW_PATH = DATA_RAW
 STEP1_FILTERED_COLUMNS = os.path.join(DATA_INTERIM, "reviews_filtered_columns.csv")
@@ -16,6 +18,8 @@ STEP5_NO_STOPWORDS = os.path.join(DATA_INTERIM, "reviews_no_stopwords.csv")
 STEP6_LEMMATIZED = os.path.join(DATA_INTERIM, "reviews_lemmatized.csv")
 STEP7_LABELED = os.path.join(DATA_INTERIM, "reviews_labeled_sentiment.csv")
 STEP8_MODEL_READY = os.path.join(DATA_PROCESSED, "reviews_model_ready.csv")
+
+REVIEW_WORDCOUNT_PNG = os.path.join(VISUALIZATIONS_DIR, "review_wordcount_distribution.png")
 
 COLUMNS_TO_KEEP = ["HotelName", "Review", "Rating"] # columns to keep for step 1
 COLUMNS_TO_KEEP_FOR_MODEL = ["Review_Lemma", "Sentiment"] # columns to keep for model

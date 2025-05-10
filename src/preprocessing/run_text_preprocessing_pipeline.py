@@ -1,12 +1,12 @@
 from clean_reviews import clean_review_dataset
-from lemmatize_reviews import lemmatize_review_dataset
-from prepare_dataset_for_model import prepare_dataset_for_model
+from lemmatize import lemmatize_review_dataset
+from prepare_final_dataset import prepare_dataset_for_model
 from remove_stopwords import clean_stopwords_from_dataset
-from src.preprocessing.create_sentiment_labels import create_sentiment_labels
+from src.preprocessing.label_sentiment import create_sentiment_labels
 from src.utils.config import *
-from src.utils.filter_columns import remove_unnecessary_columns
-from src.utils.filter_language import filter_reviews_for_specific_language
-from text_normalization import normalize_review_dataset
+from src.utils.remove_columns import remove_unnecessary_columns
+from src.utils.filter_language import filter_reviews_for_language
+from normalize_text import normalize_review_dataset
 
 
 def run_text_preprocessing_pipeline():
@@ -28,7 +28,7 @@ def run_text_preprocessing_pipeline():
     )
 
     # Step 2
-    filter_reviews_for_specific_language(
+    filter_reviews_for_language(
         input_path=STEP1_FILTERED_COLUMNS,
         output_path=STEP2_TURKISH_ONLY,
         column_to_detect_language=COLUMN_TO_DETECT_LANGUAGE,

@@ -8,8 +8,8 @@ from src.utils.logger import get_logger
 logger = get_logger(__name__)
 
 
-def filter_reviews_for_specific_language(input_path, output_path, column_to_detect_language=COLUMN_TO_DETECT_LANGUAGE,
-                                         language=LANGUAGE_TO_FILTER):
+def filter_reviews_for_language(input_path, output_path, column_to_detect_language=COLUMN_TO_DETECT_LANGUAGE,
+                                language=LANGUAGE_TO_FILTER):
     """
         Detects the language of reviews in the given column and filters only Turkish ('tr') reviews.
         Saves the result to a new CSV file.
@@ -40,7 +40,7 @@ def filter_reviews_for_specific_language(input_path, output_path, column_to_dete
 
 
 def run_filter_turkish_reviews():
-    filter_reviews_for_specific_language(
+    filter_reviews_for_language(
         input_path=STEP1_FILTERED_COLUMNS,
         output_path=STEP2_TURKISH_ONLY,
         column_to_detect_language=COLUMN_TO_DETECT_LANGUAGE,
