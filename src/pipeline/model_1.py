@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from src.preprocessing import preprocess_text
+from src.preprocessing.preprocessing import preprocess_text
 from src.sentiment_annotation.VADER import vader_sentiment_label
 from src.text_vectorization.text_vectorization_sklearn import vectorize_reviews
 from src.models.Logistics_Regression_Model import train_logistic_regression

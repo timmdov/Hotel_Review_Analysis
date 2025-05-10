@@ -1,7 +1,7 @@
 import pandas as pd
 
-from src.utils.config import STEP2_TURKISH_ONLY, STEP3_CLEANED
-from src.utils.logger import get_logger
+from src.utils.config.paths import STEP2_TURKISH_ONLY, STEP3_CLEANED
+from src.utils.io.logger import get_logger
 
 logger = get_logger(__name__)
 

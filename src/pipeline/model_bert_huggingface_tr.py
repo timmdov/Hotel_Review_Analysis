@@ -15,7 +15,7 @@ from sklearn.metrics import (
 )
 
 from src.sentiment_annotation.BERT_hotel_tr import predict_sentiment
-from src.utils.config import STEP8_MODEL_READY
+from src.utils.config.paths import STEP8_MODEL_READY
 
 # ──────────────────────────────────────────────────────────────
 # Name of the column that **contains the review text**

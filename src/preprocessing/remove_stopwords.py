@@ -16,8 +16,8 @@ The stopwords list has been carefully curated to:
 import pandas as pd
 from nltk.corpus import stopwords
 
-from src.utils.config import STEP4_NORMALIZED, STEP5_NO_STOPWORDS
-from src.utils.logger import get_logger
+from src.utils.config.paths import STEP4_NORMALIZED, STEP5_NO_STOPWORDS
+from src.utils.io.logger import get_logger
 
 logger = get_logger(__name__)
 

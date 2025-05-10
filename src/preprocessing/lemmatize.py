@@ -1,8 +1,8 @@
 import pandas as pd
 from trnlp import TrnlpWord
 
-from src.utils.config import STEP6_LEMMATIZED, STEP5_NO_STOPWORDS
-from src.utils.logger import get_logger
+from src.utils.config.paths import STEP6_LEMMATIZED, STEP5_NO_STOPWORDS
+from src.utils.io.logger import get_logger
 
 # TODO: try other tool, too
 

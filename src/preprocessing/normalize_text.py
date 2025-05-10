@@ -2,8 +2,8 @@ import re
 
 import pandas as pd
 
-from src.utils.config import STEP3_CLEANED, STEP4_NORMALIZED
-from src.utils.logger import get_logger
+from src.utils.config.paths import STEP3_CLEANED, STEP4_NORMALIZED
+from src.utils.io.logger import get_logger
 
 logger = get_logger(__name__)
 

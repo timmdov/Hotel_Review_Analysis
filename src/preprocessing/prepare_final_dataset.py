@@ -1,6 +1,6 @@
 import pandas as pd
 
-from src.utils.config import STEP7_LABELED, COLUMNS_TO_KEEP_FOR_MODEL, STEP8_MODEL_READY
+from src.utils.config.paths import STEP7_LABELED, COLUMNS_TO_KEEP_FOR_MODEL, STEP8_MODEL_READY
 
 def prepare_dataset_for_model(input_path, output_path):
     df = pd.read_csv(input_path)

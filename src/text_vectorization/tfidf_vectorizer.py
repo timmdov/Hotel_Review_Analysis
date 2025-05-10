@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
-from src.utils.logger import get_logger
-from src.utils.config import STEP5_NO_STOPWORDS
+from src.utils.io.logger import get_logger
+from src.utils.config.paths import STEP5_NO_STOPWORDS
 
 logger = get_logger(__name__)
 

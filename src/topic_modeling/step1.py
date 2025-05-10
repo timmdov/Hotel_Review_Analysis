@@ -1,6 +1,6 @@
 import pandas as pd
 import stanza
-from src.utils.config import STEP3_CLEANED
+from src.utils.config.paths import STEP3_CLEANED
 
 # Load Turkish NLP model
 nlp = stanza.Pipeline("tr", processors="tokenize", use_gpu=False)

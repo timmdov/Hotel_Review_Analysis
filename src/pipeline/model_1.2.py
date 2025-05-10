@@ -2,7 +2,7 @@ import os
 import pandas as pd
 from src.text_vectorization.text_vectorization_sklearn_tr import vectorize_reviews
 from src.models.Logistics_Regression_Model_tr import train_logistic_regression
-from src.utils.config import STEP8_MODEL_READY
+from src.utils.config.paths import STEP8_MODEL_READY
 
 
 def run_model_two(data_path: str, results_path: str):

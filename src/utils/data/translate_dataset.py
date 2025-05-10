@@ -3,7 +3,9 @@ import asyncio
 import pandas as pd
 from googletrans import Translator
 
-df = pd.read_csv("../ML_SentimentAnalysis/dataset/TripAdvisor Reviews Scraper.csv")
+from src.utils.config import RAW_PATH
+
+df = pd.read_csv(RAW_PATH)
 translator = Translator()
 
 
@@ -18,7 +20,7 @@ async def main():
     tasks = [translate_text(text) for text in df["Review"].astype(str)]
     translated = await asyncio.gather(*tasks)
     df["Review_Text_TR"] = translated
-    df.to_csv("../ML_SentimentAnalysis/dataset/Translated Reviews.csv", index=False)
+    df.to_csv("../data/Translated Reviews.csv", index=False)
 
 
 asyncio.run(main())
