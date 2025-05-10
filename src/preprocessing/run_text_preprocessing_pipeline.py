@@ -1,10 +1,10 @@
-from clean_reviews import clean_review_dataset
-from lemmatize import lemmatize_review_dataset
-from prepare_final_dataset import prepare_dataset_for_model
-from remove_stopwords import clean_stopwords_from_dataset
+from src.preprocessing.clean_reviews import clean_review_dataset
+from src.preprocessing.lemmatize import lemmatize_review_dataset
+from src.preprocessing.prepare_final_dataset import prepare_dataset_for_model
+from src.preprocessing.remove_stopwords import clean_stopwords_from_dataset
 from src.preprocessing.filter_language import filter_reviews_for_language
 from src.preprocessing.label_sentiment import create_sentiment_labels
-from normalize_text import normalize_review_dataset
+from src.preprocessing.normalize_text import normalize_review_dataset
 from src.preprocessing.remove_columns import remove_unnecessary_columns
 from src.utils.config.paths import *
 
